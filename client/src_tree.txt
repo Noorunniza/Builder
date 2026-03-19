@@ -1,0 +1,232 @@
+Folder PATH listing for volume New Volume
+Volume serial number is 1A07-2628
+D:\BUILDER\CLIENT\SRC
+|   App.jsx
+|   main.jsx
+|   style.css
+|   
++---assets
+|       login-bg.jpg
+|       
++---components
+|   +---auth
+|   |       Logout.jsx
+|   |       Logout.styles.js
+|   |       
+|   +---dashboard
+|   |   +---dashboardLayout
+|   |   |       DashboardLayout.jsx
+|   |   |       
+|   |   +---sidebar
+|   |   |       Sidebar.jsx
+|   |   |       Sidebar.styles.js
+|   |   |       
+|   |   +---Topbar
+|   |   |       Topbar.jsx
+|   |   |       Topbar.styles.js
+|   |   |       
+|   |   +---UserSidebar
+|   |   |       UserSidebar.jsx
+|   |   |       UserSidebar.styles.js
+|   |   |       
+|   |   \---WebsiteSidebar
+|   |           WebsiteSidebar.jsx
+|   |           WebsiteSidebar.styles.js
+|   |           
+|   +---layouts
+|   |   |   AuthLayout.jsx
+|   |   |   
+|   |   +---AuthLayout
+|   |   |       AuthLayout.jsx
+|   |   |       AuthLayout.styles.js
+|   |   |       
+|   |   \---DashboardLayout
+|   |           DashboardLayout.jsx
+|   |           DashboardLayout.styles.js
+|   |           
+|   +---siteBuilder
+|   |   +---editors
+|   |   |   +---BannerEditor
+|   |   |   |       BannerEditor.jsx
+|   |   |   |       BannerEditor.styles.js
+|   |   |   |       
+|   |   |   +---ContactEditor
+|   |   |   |       ContactEditor.jsx
+|   |   |   |       ContactEditor.styles.js
+|   |   |   |       
+|   |   |   +---FooterEditor
+|   |   |   |       FooterEditor.jsx
+|   |   |   |       FooterEditor.styles.js
+|   |   |   |       
+|   |   |   +---HeaderEditor
+|   |   |   |       HeaderEditor.jsx
+|   |   |   |       HeaderEditor.styles.js
+|   |   |   |       
+|   |   |   \---PolicyEditor
+|   |   |           PolicyEditor.jsx
+|   |   |           PolicyEditor.styles.js
+|   |   |           
+|   |   +---preview
+|   |   |   \---SitePreview
+|   |   |           SitePreview.jsx
+|   |   |           SitePreview.styles.js
+|   |   |           
+|   |   +---products
+|   |   |   +---AddCategory
+|   |   |   |       AddCategory.jsx
+|   |   |   |       
+|   |   |   +---AddProduct
+|   |   |   |       AddProduct.jsx
+|   |   |   |       
+|   |   |   +---AddSubcategory
+|   |   |   |       AddSubcategory.jsx
+|   |   |   |       
+|   |   |   +---ArrangeList
+|   |   |   |       ArrangeList.jsx
+|   |   |   |       ArrangeList.styles.js
+|   |   |   |       
+|   |   |   +---ManageProducts
+|   |   |   |       ManageProducts.jsx
+|   |   |   |       
+|   |   |   +---ProductsSettings
+|   |   |   |       ProductsSettings.jsx
+|   |   |   |       ProductsSettings.styles.js
+|   |   |   |       
+|   |   |   \---ProductsTab
+|   |   |           ProductsTab.jsx
+|   |   |           ProductsTab.styles.js
+|   |   |           
+|   |   +---sections
+|   |   |   |   SectionConfig.jsx
+|   |   |   |   
+|   |   |   +---SectionEditorPanel
+|   |   |   |       SectionEditorPanel.jsx
+|   |   |   |       
+|   |   |   +---SectionPreviewPanel
+|   |   |   |       SectionPreviewPanel.jsx
+|   |   |   |       
+|   |   |   +---SectionsManager
+|   |   |   |       SectionsManager.jsx
+|   |   |   |       SectionsManager.styles.js
+|   |   |   |       
+|   |   |   \---SectionsNav
+|   |   |           SectionsNav.jsx
+|   |   |           
+|   |   +---SiteDesign
+|   |   |       SiteDesign.jsx
+|   |   |       SiteDesign.styles.js
+|   |   |       
+|   |   \---SiteHome
+|   |           SiteHome.jsx
+|   |           SiteHome.styles.js
+|   |           
+|   \---ui
+|       +---ActionButton
+|       |       ActionButton.jsx
+|       |       
+|       +---Button
+|       |       Button.jsx
+|       |       
+|       +---Card
+|       |       Card.jsx
+|       |       Card.styles.js
+|       |       
+|       +---Input
+|       |       Input.jsx
+|       |       
+|       \---SelectCard
+|               SelectCard.jsx
+|               
++---pages
+|   +---CreateWebsite
+|   |       CreateWebsite.jsx
+|   |       CreateWebsite.styles.js
+|   |       
+|   +---Dashboard
+|   |       Dashboard.jsx
+|   |       Dashboard.styles.js
+|   |       
+|   +---Login
+|   |       Login.jsx
+|   |       Login.styles.js
+|   |       
+|   +---Register
+|   |       Register.jsx
+|   |       Register.styles.js
+|   |       
+|   +---siteDashboard
+|   |   |   SiteDashboard.jsx
+|   |   |   SiteDashboard.styles.js
+|   |   |   
+|   |   +---main
+|   |   |       SiteDashboard.jsx
+|   |   |       SiteDashboard.styles.js
+|   |   |       
+|   |   \---tabs
+|   |       +---design
+|   |       |   |   SiteDesign.jsx
+|   |       |   |   
+|   |       |   +---editor
+|   |       |   |   |   EditorPanel.styles.js
+|   |       |   |   |   shared.styles.js
+|   |       |   |   |   
+|   |       |   |   \---sections
+|   |       |   |           BannerEditor.jsx
+|   |       |   |           FooterEditor.jsx
+|   |       |   |           HeaderEditor.jsx
+|   |       |   |           
+|   |       |   \---preview
+|   |       |           SitePreview.jsx
+|   |       |           
+|   |       +---home
+|   |       |       SiteHome.jsx
+|   |       |       
+|   |       +---products
+|   |       |   |   ProductsTab.jsx
+|   |       |   |   
+|   |       |   \---views
+|   |       |           AddCategory.jsx
+|   |       |           AddProduct.jsx
+|   |       |           AddSubcategory.jsx
+|   |       |           ArrangeList.jsx
+|   |       |           ManageProducts.jsx
+|   |       |           Settings.jsx
+|   |       |           
+|   |       \---sections
+|   |           |   sectionDefaults.jsx
+|   |           |   SectionEditorPanel.jsx
+|   |           |   SectionPreviewPanel.jsx
+|   |           |   sections.styles.js
+|   |           |   SectionsNav.jsx
+|   |           |   
+|   |           +---contacteditor
+|   |           |       ContactEditor.jsx
+|   |           |       ContactEditor.styles.js
+|   |           |       
+|   |           +---policyeditor
+|   |           |       PolicyEditor.jsx
+|   |           |       PolicyEditor.styles.js
+|   |           |       
+|   |           +---sectionConfig
+|   |           |       SectionConfig.jsx
+|   |           |       
+|   |           +---sectionDefaults
+|   |           |       SectionDefaults.js
+|   |           |       
+|   |           \---sectionManager
+|   |                   SectionsManager.jsx
+|   |                   SectionsManager.styles.js
+|   |                   
+|   \---StoreDetails
+|           StoreDetails.jsx
+|           StoreDetails.styles.js
+|           
++---services
+|       api.js
+|       
++---styles
+|       GlobalStyles.js
+|       
+\---utils
+        authValidation.js
+        
