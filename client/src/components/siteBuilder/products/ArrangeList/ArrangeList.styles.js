@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { GripVertical } from "lucide-react"
 
 export const ArrangeContainer = styled.div`
   display: flex;
@@ -116,3 +117,5 @@ export const SecondaryButton = styled.button`
     color: #0f172a; 
   }
 `
+
+export const DragIcon = styled(GripVertical).attrs({ size: 18 })``

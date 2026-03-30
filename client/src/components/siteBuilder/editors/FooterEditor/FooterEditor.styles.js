@@ -105,3 +105,5 @@ export const HexText = styled.span`
   color: #64748b;
   font-family: monospace;
 `
+
+export const DEFAULT_BG_COLOR = "#0f172a"

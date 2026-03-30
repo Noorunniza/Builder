@@ -37,13 +37,12 @@ export default function SectionEditorPanel({
                         onChange={onChange}
                     />
                 )}
-            </EditorContent>
-
             <SaveBar>
                 <SaveButton onClick={onSave} disabled={saving}>
                     {saving ? "Saving..." : saved ? "✓ Saved!" : "Save Changes"}
                 </SaveButton>
             </SaveBar>
-        </EditorSide>
+        </EditorContent>
+    </EditorSide>
     )
 }

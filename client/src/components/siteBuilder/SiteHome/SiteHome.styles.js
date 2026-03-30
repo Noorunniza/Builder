@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components"
+import { Copy, Check, ExternalLink, Globe, Lock } from "lucide-react"
 
 const fadeIn = keyframes`
   from { opacity: 0; transform: translateY(12px); }
@@ -30,6 +31,7 @@ export const SectionTitle = styled.h2`
   text-transform: uppercase;
   letter-spacing: 0.06em;
   margin-bottom: 16px;
+  margin-top: ${p => p.$marginTop || '0'};
 `
 
 export const UrlBox = styled.div`
@@ -190,3 +192,9 @@ export const StatusBadge = styled.span`
     50% { opacity: 0.4; }
   }
 `
+
+export const CheckIcon = styled(Check).attrs({ size: 16 })``
+export const CopyIcon = styled(Copy).attrs({ size: 16 })``
+export const VisitIcon = styled(ExternalLink).attrs({ size: 16 })``
+export const DraftIcon = styled(Lock).attrs({ size: 16 })``
+export const LiveIcon = styled(Globe).attrs({ size: 16 })``

@@ -1,4 +1,4 @@
-﻿import styled from "styled-components"
+import styled from "styled-components"
 
 export const PolicyView = styled.div`
   background: white;
@@ -30,7 +30,7 @@ export const PolicyTitle = styled.h2`
   font-size: 28px;
   font-weight: 800;
   color: #0f172a;
-  margin-bottom: 24px;
+  margin-bottom: ${p => p.$mb || "24px"};
   text-align: center;
 `
 
@@ -43,11 +43,15 @@ export const PolicyDescription = styled.p`
 `
 
 export const ContactSection = styled.div`
-  background: white;
-  padding: 32px 24px;
+  background: ${p => p.$bg || "white"};
+  padding: ${p => p.$padding || "32px 24px"};
   display: flex;
   flex-direction: column;
   align-items: center;
+  ${p => p.$fullWidth && `
+    width: 100%;
+    box-sizing: border-box;
+  `}
 `
 
 export const ContactCard = styled.div`
@@ -70,10 +74,15 @@ export const ContactTitle = styled.h3`
 `
 
 export const ContactSub = styled.p`
-  font-size: 13px;
+  font-size: ${p => p.$fz || "13px"};
   color: #94a3b8;
   text-align: center;
-  margin-bottom: 6px;
+  margin-bottom: ${p => p.$mb || "6px"};
+`
+
+export const MapWrapper = styled.div`
+  width: 100%;
+  max-width: 800px;
 `
 
 export const ContactInput = styled.input`

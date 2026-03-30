@@ -1,148 +1,32 @@
 import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import api from "../../services/api"
-
 import UserSidebar from "../../components/dashboard/UserSidebar/UserSidebar"
 import DashboardLayout from "../../components/layouts/DashboardLayout/DashboardLayout"
-
-import Card from "../../components/ui/Card/Card"
-import Button from "../../components/ui/ActionButton/ActionButton"
-
-import {
-    Wrapper,
-    SectionTitle,
-    CardsRow,
-    Actions,
-    WebsiteList,
-    WebsiteRow,
-    SiteName,
-    SiteType,
-    EmptyState
-} from "./Dashboard.styles"
+import BillingPage from "../../components/dashboard/BillingPage/BillingPage"
+import DashboardHome from "./DashboardHome"
 
 export default function Dashboard() {
-
     const navigate = useNavigate()
-
     const [user, setUser] = useState(null)
     const [websites, setWebsites] = useState([])
+    const [activeTab, setActiveTab] = useState("Dashboard")
 
     useEffect(() => {
-
         const token = localStorage.getItem("token")
+        if (!token) return navigate("/")
 
-        if (!token) {
-            navigate("/")
-            return
-        }
-
-        const fetchData = async () => {
-
-            try {
-
-                const res = await api.get(
-                    "/dashboard",
-                    {
-                        headers: {
-                            Authorization: `Bearer ${token}`
-                        }
-                    }
-                )
-
+        api.get("/dashboard", { headers: { Authorization: `Bearer ${token}` } })
+            .then(res => {
                 setUser(res.data.user)
                 setWebsites(res.data.websites || res.data.stats?.websiteList || [])
-
-            } catch (err) {
-                console.log(err)
-            }
-
-        }
-
-        fetchData()
-
+            })
+            .catch(err => console.log(err))
     }, [])
 
     return (
-
-        <DashboardLayout
-            SidebarComponent={UserSidebar}
-            user={user}
-        >
-
-            <Wrapper>
-
-                {/*  Stats Cards */}
-
-                <SectionTitle>Overview</SectionTitle>
-
-                <CardsRow>
-                    <Card
-                        title="Total Websites"
-                        value={websites?.length || 0}
-                    />
-
-                    <Card
-                        title="Current Plan"
-                        value={user?.plan ?? "Free"}
-                    />
-                </CardsRow>
-
-                {/*  Actions */}
-
-                <SectionTitle>Quick Actions</SectionTitle>
-
-                <Actions>
-
-                    <Button onClick={() => navigate("/create")}>
-                        + Create Website
-                    </Button>
-
-                    <Button onClick={() => navigate("/ai-builder")}>
-                        ✦ Generate With AI
-                    </Button>
-
-                </Actions>
-
-                {/*  Website List */}
-
-                <WebsiteList>
-
-                    <h3>🌐 My Websites</h3>
-
-                    {(!websites || websites.length === 0) && (
-                        <EmptyState>
-                            <span className="icon">🚀</span>
-                            <p>No websites yet — create your first one above!</p>
-                        </EmptyState>
-                    )}
-
-                    {websites?.map(site => (
-
-                        <WebsiteRow key={site._id}>
-
-                            <div>
-                                <SiteName>{site.name}</SiteName>
-                                <SiteType>{site.type}</SiteType>
-                            </div>
-
-                            <Button
-                                onClick={() =>
-                                    navigate(`/dashboard/site/${site._id}`)
-                                }
-                            >
-                                Manage →
-                            </Button>
-
-                        </WebsiteRow>
-
-                    ))}
-
-                </WebsiteList>
-
-            </Wrapper>
-
+        <DashboardLayout SidebarComponent={UserSidebar} user={user} activeTab={activeTab} onTabChange={setActiveTab}>
+            {activeTab === "Billing" ? <BillingPage user={user} /> : <DashboardHome user={user} websites={websites} />}
         </DashboardLayout>
-
     )
-
 }

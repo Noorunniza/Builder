@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { LayoutList, Plus, FolderPlus, Settings as SettingsIcon, Search, Edit2 } from "lucide-react"
 
 /* ── Sub Nav ─── */
 export const SubNav = styled.nav`
@@ -177,6 +178,18 @@ export const ProductImg = styled.img`
   border: 1px solid #e2e8f0;
 `
 
+export const ProductImgPlaceholder = styled.div`
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  background: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: #94a3b8;
+`
+
 export const ProductEmoji = styled.div`
   width: 48px;
   height: 48px;
@@ -316,14 +329,16 @@ export const PriceRow = styled.div`
 
 export const SubmitBtn = styled.button`
   padding: 12px 24px;
-  background: #6366f1;
-  color: white;
+  background: ${p => p.$bg || "#6366f1"};
+  color: ${p => p.$color || "white"};
   border: none;
   border-radius: 8px;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
   transition: opacity 0.2s;
+  height: fit-content;
+  ${p => p.$flex1 && "flex: 1;"}
   &:hover { opacity: 0.85; }
 `
 
@@ -353,7 +368,7 @@ export const ImageUploadArea = styled.label`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 32px 16px;
+  padding: ${p => p.$padding || "32px 16px"};
   border: 2px dashed #cbd5e1;
   border-radius: 12px;
   background: #f8fafc;
@@ -369,13 +384,38 @@ export const ImageUploadArea = styled.label`
   }
 `
 
+export const StickyButtonBar = styled.div`
+  position: sticky;
+  bottom: 0px;
+  background: white;
+  padding: 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  display: flex;
+  gap: 12px;
+  z-index: 100;
+  box-shadow: 0 -8px 24px rgba(15, 23, 42, 0.08);
+  margin-top: auto;
+`
+
+export const SubcategoryItem = styled.div`
+  font-size: 14px;
+  padding: 6px 0;
+  border-bottom: 1px solid #f1f5f9;
+  color: #0f172a;
+`
+
+export const HiddenInput = styled.input`
+  display: none;
+`
+
 export const ImagePreview = styled.img`
   width: 100px;
   height: 100px;
   object-fit: contain;
   border-radius: 8px;
   border: 1px solid #e2e8f0;
-  margin-top: 12px;
+  margin-top: ${p => p.$mt !== undefined ? p.$mt : "12px"};
 `
 
 export const StatusRow = styled.div`
@@ -467,4 +507,34 @@ export const EditIconButton = styled.button`
     box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.2);
   }
 `
+
+export const STATUS_COLORS = {
+    shown: "#22c55e",
+    hidden: "#f59e0b",
+    coming_soon: "#3b82f6",
+    sold_out: "#ef4444"
+}
+
+export const STATUSES = [
+    { key: "shown", label: "Shown", accent: "#22c55e" },
+    { key: "hidden", label: "Hidden", accent: "#f59e0b" },
+    { key: "coming_soon", label: "Coming Soon", accent: "#3b82f6" },
+    { key: "sold_out", label: "Sold Out", accent: "#ef4444" }
+]
+
+export const CANCEL_BTN_BG = "#e2e8f0"
+export const CANCEL_BTN_TEXT = "#0f172a"
+export const DELETE_BTN_BG = "#fee2e2"
+export const DELETE_BTN_TEXT = "#dc2626"
+
+export const ManageIcon = styled(LayoutList).attrs({ size: 14 })``
+export const AddIcon = styled(Plus).attrs({ size: 14 })``
+export const CategoryIcon = styled(FolderPlus).attrs({ size: 14 })``
+export const SubcategoryIcon = styled(FolderPlus).attrs({ size: 14 })``
+export const ConfigIcon = styled(SettingsIcon).attrs({ size: 14 })``
+export const SearchIcon = styled(Search).attrs({ size: 14 })`
+  color: #94a3b8;
+`
+export const PlusIcon = AddIcon
+export const EditCategoryIcon = styled(Edit2).attrs({ size: 14 })``
 

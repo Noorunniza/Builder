@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { Monitor, Smartphone } from "lucide-react"
 
 export const DesignLayout = styled.div`
   display: flex;
@@ -6,9 +7,12 @@ export const DesignLayout = styled.div`
   width: 100%;
   overflow: hidden;
   background: #f1f5f9;
-`
 
-/* ── Left Editor Panel ─────────────────── */
+  @media (max-width: 1100px) {
+    flex-direction: column;
+    overflow: visible;
+  }
+`
 
 export const EditorSide = styled.div`
   width: 360px;
@@ -19,6 +23,13 @@ export const EditorSide = styled.div`
   background: white;
   border-right: 1.5px solid #e2e8f0;
   overflow: hidden;
+
+  @media (max-width: 1100px) {
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1.5px solid #e2e8f0;
+  }
 `
 
 export const EditorTopbar = styled.div`
@@ -29,6 +40,7 @@ export const EditorTopbar = styled.div`
   border-bottom: 1.5px solid #e2e8f0;
   background: white;
   flex-shrink: 0;
+  overflow-x: auto;
 `
 
 export const EditorTab = styled.button`
@@ -41,6 +53,7 @@ export const EditorTab = styled.button`
   color: ${p => p.$active ? "#0f172a" : "#94a3b8"};
   cursor: pointer;
   transition: color 0.2s ease, border-color 0.2s ease;
+  white-space: nowrap;
 
   &:hover {
     color: #0f172a;
@@ -54,6 +67,10 @@ export const EditorBody = styled.div`
 
   &::-webkit-scrollbar { width: 4px; }
   &::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 4px; }
+
+  @media (max-width: 640px) {
+    padding: 18px 16px;
+  }
 `
 
 export const SaveBar = styled.div`
@@ -63,6 +80,10 @@ export const SaveBar = styled.div`
   flex-shrink: 0;
   display: flex;
   gap: 10px;
+  position: sticky;
+  bottom: -24px;
+  margin: 40px -20px -24px -20px;
+  z-index: 100;
 `
 
 export const SaveButton = styled.button`
@@ -92,14 +113,16 @@ export const SaveButton = styled.button`
   }
 `
 
-/* ── Right Preview Panel ───────────────── */
-
 export const PreviewSide = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
   overflow: hidden;
   background: #e5e7eb;
+
+  @media (max-width: 1100px) {
+    min-height: 60vh;
+  }
 `
 
 export const PreviewToolbar = styled.div`
@@ -140,10 +163,14 @@ export const PreviewFrame = styled.div`
   justify-content: center;
   overflow-y: auto;
   padding: 24px;
+
+  @media (max-width: 640px) {
+    padding: 16px 8px 20px;
+  }
 `
 
 export const PreviewViewport = styled.div`
-  width: ${p => p.$device === "mobile" ? "390px" : "100%"};
+  width: ${p => p.$device === "mobile" ? "min(390px, 100%)" : "100%"};
   max-width: ${p => p.$device === "mobile" ? "390px" : "900px"};
   min-height: 600px;
   background: white;
@@ -152,3 +179,16 @@ export const PreviewViewport = styled.div`
   box-shadow: 0 20px 60px rgba(0,0,0,0.15);
   transition: width 0.3s ease;
 `
+
+export const FALLBACK_HEADER_BG = "#000000"
+export const FALLBACK_HEADER_TEXT = "#ffffff"
+
+export const FALLBACK_BANNER_BG = "#1e293b"
+export const FALLBACK_BANNER_TEXT = "#ffffff"
+
+export const FALLBACK_PRIMARY = "#6366f1"
+
+export const FALLBACK_FOOTER_BG = "#0f172a"
+
+export const DesktopIcon = styled(Monitor).attrs({ size: 14 })``
+export const MobileIcon = styled(Smartphone).attrs({ size: 14 })``

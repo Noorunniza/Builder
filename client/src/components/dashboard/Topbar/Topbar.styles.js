@@ -7,10 +7,16 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
   border-bottom: 1px solid #f1f5f9;
   position: sticky;
   top: 0;
   z-index: 10;
+
+  @media (max-width: 640px) {
+    padding: 14px 16px;
+    flex-wrap: wrap;
+  }
 `
 
 export const WelcomeText = styled.span`
@@ -21,6 +27,10 @@ export const WelcomeText = styled.span`
   span {
     color: #0f172a;
     font-weight: 700;
+  }
+
+  @media (max-width: 640px) {
+    font-size: 14px;
   }
 `
 
@@ -39,5 +49,9 @@ export const LogoutBtn = styled.button`
     background: #f8fafc;
     color: #0f172a;
     border-color: #cbd5e1;
+  }
+
+  @media (max-width: 640px) {
+    width: 100%;
   }
 `

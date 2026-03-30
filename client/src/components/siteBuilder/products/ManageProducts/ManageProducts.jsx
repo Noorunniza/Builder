@@ -1,21 +1,12 @@
 import React, { useState } from "react"
-import {
-    Search,
-    Plus
-} from "lucide-react"
+// Icons are now imported from styles as styled-components
 import {
     Toolbar, PageTitle, AddBtn,
     SearchWrap, SearchInput, Legend, Dot,
-    Table, Th, Tr, Td, ProductImg,
-    ActionGroup, ViewBtn, EditBtn, DeleteBtn, EmptyState
+    Table, Th, Tr, Td, ProductImg, ProductImgPlaceholder,
+    ActionGroup, ViewBtn, EditBtn, DeleteBtn, EmptyState,
+    STATUS_COLORS, PlusIcon, SearchIcon
 } from "../ProductsTab/ProductsTab.styles"
-
-const STATUS_COLORS = {
-    shown: "#22c55e",
-    hidden: "#f59e0b",
-    coming_soon: "#3b82f6",
-    sold_out: "#ef4444"
-}
 
 export default function ManageProducts({ products, onAddProduct, onEdit, onDelete }) {
 
@@ -35,11 +26,11 @@ export default function ManageProducts({ products, onAddProduct, onEdit, onDelet
                 <AddBtn type="button" onClick={() => {
                     console.log("Add button clicked in ManageProducts DOM");
                     onAddProduct();
-                }}><Plus size={14} /> Add Product</AddBtn>
+                }}><PlusIcon /> Add Product</AddBtn>
             </Toolbar>
 
             <SearchWrap>
-                <Search size={14} color="#94a3b8" />
+                <SearchIcon />
                 <SearchInput
                     placeholder="Search by Product Name, Category, Barcode or Basket number..."
                     value={query}
@@ -83,7 +74,7 @@ export default function ManageProducts({ products, onAddProduct, onEdit, onDelet
                                 <Td>
                                     {p.image
                                         ? <ProductImg src={p.image} alt={p.name} />
-                                        : <div style={{ width: 48, height: 48, borderRadius: 8, background: '#f1f5f9', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, color: '#94a3b8' }}>No Image</div>
+                                        : <ProductImgPlaceholder>No Image</ProductImgPlaceholder>
                                     }
                                 </Td>
                                 <Td>

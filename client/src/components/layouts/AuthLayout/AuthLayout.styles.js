@@ -1,95 +1,80 @@
 import styled from "styled-components"
-import bg from "../../../assets/login-bg.jpg"
 
 export const Container = styled.div`
-display:flex;
-height:100vh;
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  background: #ffffff;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
 `
 
 export const Left = styled.div`
-flex:1;
-display:flex;
-justify-content:center;
-align-items:center;
-background:white;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background: #ffffff;
+
+  @media (max-width: 900px) {
+    padding: 24px;
+    order: 2;
+  }
 `
 
 export const Right = styled.div`
-flex:1;
-position:relative;
-background:url(${bg}) center/cover no-repeat;
+  flex: 1.2;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
+  position: relative;
+  overflow: hidden;
 
-display:flex;
-align-items:center;
-justify-content:flex-start;
+  &::before {
+    content: "";
+    position: absolute;
+    top: -10%;
+    right: -10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
 
-/* dark premium overlay */
-
-&::before{
-content:"";
-position:absolute;
-inset:0;
-
-background:linear-gradient(
-135deg,
-rgba(0,0,0,0.65),
-rgba(0,0,0,0.25)
-);
-
-}
+  @media (max-width: 900px) {
+    display: none;
+  }
 `
 
 export const OverlayCard = styled.div`
-position:relative;
-margin-left:60px;
-background:rgba(255,255,255,0.15);
-backdrop-filter:blur(18px);
-padding:45px;
-border-radius:22px;
-color:white;
-width:75%;
-border:1px solid rgba(255,255,255,0.2);
-box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-/* Move overlay card a bit to the top */
-transform: translateY(-40px);
-`
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 48px;
+  border-radius: 24px;
+  max-width: 500px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 
-export const Quote = styled.h2`
-font-size:26px;
-line-height:1.4;
-font-weight:600;
-`
-
-export const Stars = styled.div`
-margin-top:20px;
-color:gold;
-letter-spacing:4px;
-font-size:20px;
-`
-
-export const UserRow = styled.div`
-display:flex;
-align-items:center;
-margin-top:30px;
-`
-
-export const Avatar = styled.img`
-width:55px;
-height:55px;
-border-radius:50%;
-margin-right:14px;
-border:2px solid white;
-`
-
-export const UserInfo = styled.div`
-font-size:14px;
-span{
-display:block;
-opacity:0.8;
-font-size:12px;
-}
+  h2 {
+    color: white;
+    font-size: 32px;
+    line-height: 1.4;
+    margin-bottom: 24px;
+    font-weight: 600;
+    font-style: italic;
+  }
 `
 
 export const SubTitle = styled.p`
-margin-top:20px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 `

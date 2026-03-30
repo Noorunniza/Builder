@@ -1,10 +1,12 @@
 import React, { useState } from "react"
+import { uploadImage } from "../../../../services/uploadService"
 
 import {
     SectionBox, TopBar, HeadingText, DropdownContent,
     IconUp, IconDown,
     InputContainer, Label, InputBox, ColorBox, ColorPicker, HexText,
-    ImageUploadArea, PreviewImg, EmptyImage, TextArea, MainText, SubText
+    ImageUploadArea, PreviewImg, EmptyImage, TextArea, MainText, SubText,
+    DEFAULT_BG_COLOR, DEFAULT_TEXT_COLOR
 } from "./HeaderEditor.styles"
 
 function Section({ title, children }) {
@@ -39,27 +41,30 @@ export default function HeaderEditor({ config, onChange }) {
                 <InputContainer>
                     <Label>Bar Color</Label>
                     <ColorBox>
-                        <ColorPicker value={h.bgColor || "#000000"} onChange={e => set("bgColor", e.target.value)} />
-                        <HexText>{h.bgColor || "#000000"}</HexText>
+                        <ColorPicker value={h.bgColor || DEFAULT_BG_COLOR} onChange={e => set("bgColor", e.target.value)} />
+                        <HexText>{h.bgColor || DEFAULT_BG_COLOR}</HexText>
                     </ColorBox>
                 </InputContainer>
                 <InputContainer>
                     <Label>Text Color</Label>
                     <ColorBox>
-                        <ColorPicker value={h.textColor || "#ffffff"} onChange={e => set("textColor", e.target.value)} />
-                        <HexText>{h.textColor || "#ffffff"}</HexText>
+                        <ColorPicker value={h.textColor || DEFAULT_TEXT_COLOR} onChange={e => set("textColor", e.target.value)} />
+                        <HexText>{h.textColor || DEFAULT_TEXT_COLOR}</HexText>
                     </ColorBox>
                 </InputContainer>
             </Section>
 
             <Section title="Logo">
                 <ImageUploadArea>
-                    <input type="file" accept="image/*" onChange={e => {
+                    <input type="file" accept="image/*" onChange={async e => {
                         const file = e.target.files[0]
                         if (!file) return
-                        const reader = new FileReader()
-                        reader.onload = ev => set("logo", ev.target.result)
-                        reader.readAsDataURL(file)
+                        try {
+                            const url = await uploadImage(file)
+                            set("logo", url)
+                        } catch (err) {
+                            console.error("Logo upload failed", err)
+                        }
                     }} />
                     {h.logo
                         ? <PreviewImg src={h.logo} alt="logo" />

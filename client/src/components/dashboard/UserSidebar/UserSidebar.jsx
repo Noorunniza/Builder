@@ -1,49 +1,55 @@
 import React, { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 import {
 
     Container,
     Logo,
     Menu,
-    MenuItem
-
+    MenuItem,
+    LogoutButton,
+    DashboardIcon,
+    GlobeIcon,
+    SparklesIcon,
+    BillingIcon,
+    LogoutIcon
 } from "./UserSidebar.styles"
 
-import {
-
-    LayoutDashboard,
-    Globe,
-    Sparkles,
-    CreditCard
-
-} from "lucide-react"
+// Icons are now imported from styles as styled-components
 
 
 
-export default function UserSidebar() {
+export default function UserSidebar({ activeTab = "Dashboard", onTabChange }) {
+    const navigate = useNavigate()
+    const active = activeTab
+    const setActive = (name) => { if (onTabChange) onTabChange(name) }
 
-    const [active, setActive] = useState("Dashboard")
+    const handleLogout = () => {
+        localStorage.removeItem("token")
+        localStorage.removeItem("provider")
+        navigate("/")
+    }
 
     const items = [
 
         {
             name: "Dashboard",
-            icon: <LayoutDashboard size={18} />
+            icon: <DashboardIcon />
         },
 
         {
             name: "Websites",
-            icon: <Globe size={18} />
+            icon: <GlobeIcon />
         },
 
         {
             name: "AI Builder",
-            icon: <Sparkles size={18} />
+            icon: <SparklesIcon />
         },
 
         {
             name: "Billing",
-            icon: <CreditCard size={18} />
+            icon: <BillingIcon />
         }
 
     ]
@@ -88,6 +94,11 @@ export default function UserSidebar() {
                 ))}
 
             </Menu>
+
+            <LogoutButton onClick={handleLogout}>
+                <LogoutIcon />
+                Logout
+            </LogoutButton>
 
         </Container>
 

@@ -156,3 +156,6 @@ export const SubText = styled.span`
   font-size: 11px;
   color: #94a3b8;
 `
+
+export const DEFAULT_BG_COLOR = "#000000"
+export const DEFAULT_TEXT_COLOR = "#ffffff"

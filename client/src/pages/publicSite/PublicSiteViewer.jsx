@@ -2,54 +2,7 @@ import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import api from "../../services/api"
 import SitePreview from "../../components/siteBuilder/preview/SitePreview/SitePreview"
-import styled, { createGlobalStyle } from "styled-components"
-
-// ── Reset any dashboard global styles so the live site looks clean ──
-const LiveGlobal = createGlobalStyle`
-    body { margin: 0; padding: 0; background: #fff; }
-`
-
-const FullScreenWrapper = styled.div`
-    min-height: 100vh;
-    width: 100%;
-    background: white;
-    display: flex;
-    flex-direction: column;
-`
-
-const Center = styled.div`
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: #f8fafc;
-    font-family: 'Inter', sans-serif;
-    gap: 16px;
-`
-
-const Spinner = styled.div`
-    width: 44px;
-    height: 44px;
-    border: 4px solid #e2e8f0;
-    border-top-color: #6366f1;
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
-    @keyframes spin { to { transform: rotate(360deg); } }
-`
-
-const Title = styled.h1`
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #1e293b;
-    margin: 0;
-`
-
-const Sub = styled.p`
-    font-size: 0.95rem;
-    color: #64748b;
-    margin: 0;
-`
+import { LiveGlobal, FullScreenWrapper, Center, Spinner, Title, Sub } from "./PublicSiteViewer.styles"
 
 export default function PublicSiteViewer() {
 
@@ -118,6 +71,7 @@ export default function PublicSiteViewer() {
                 config={website.config}
                 website={website}
                 device="desktop"
+                persistOrders
             />
         </FullScreenWrapper>
     )

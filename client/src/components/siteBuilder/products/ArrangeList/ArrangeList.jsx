@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react"
-import { GripVertical } from "lucide-react"
+// Icons are now imported from styles as styled-components
 import {
     ArrangeContainer,
     Header,
@@ -12,7 +12,8 @@ import {
     ItemContent,
     ButtonGroup,
     PrimaryButton,
-    SecondaryButton
+    SecondaryButton,
+    DragIcon
 } from "./ArrangeList.styles"
 
 export default function ArrangeList({ items, type, onSave, onBack }) {
@@ -72,7 +73,7 @@ export default function ArrangeList({ items, type, onSave, onBack }) {
                         onDragOver={(e) => e.preventDefault()}
                         $isDragging={draggingIndex === index}
                     >
-                        <DragHandle><GripVertical size={18} /></DragHandle>
+                        <DragHandle><DragIcon /></DragHandle>
                         <ItemContent>{getItemLabel(item)}</ItemContent>
                     </ListItem>
                 ))}

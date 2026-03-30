@@ -3,7 +3,8 @@ import React, { useState } from "react"
 import {
     SectionBox, TopBar, HeadingText, DropdownContent,
     IconUp, IconDown,
-    InputContainer, Label, InputBox, ColorBox, ColorPicker, HexText
+    InputContainer, Label, InputBox, ColorBox, ColorPicker, HexText,
+    DEFAULT_BG_COLOR
 } from "./FooterEditor.styles"
 
 function Section({ title, children }) {
@@ -67,8 +68,8 @@ export default function FooterEditor({ config, onChange }) {
                 <InputContainer>
                     <Label>Footer Background Color</Label>
                     <ColorBox>
-                        <ColorPicker value={f.bgColor || "#0f172a"} onChange={e => setFooter("bgColor", e.target.value)} />
-                        <HexText>{f.bgColor || "#0f172a"}</HexText>
+                        <ColorPicker value={f.bgColor || DEFAULT_BG_COLOR} onChange={e => setFooter("bgColor", e.target.value)} />
+                        <HexText>{f.bgColor || DEFAULT_BG_COLOR}</HexText>
                     </ColorBox>
                 </InputContainer>
             </Section>

@@ -7,7 +7,11 @@ export const Wrapper = styled.div`
 
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
-    to   { opacity: 1; transform: translateY(0); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 640px) {
+    padding: 24px 16px 32px;
   }
 `
 
@@ -25,6 +29,10 @@ export const CardsRow = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(200px, 280px));
   gap: 16px;
   margin-bottom: 36px;
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
 `
 
 export const Actions = styled.div`
@@ -55,12 +63,17 @@ export const WebsiteList = styled.div`
     align-items: center;
     gap: 8px;
   }
+
+  @media (max-width: 640px) {
+    padding: 20px 16px;
+  }
 `
 
 export const WebsiteRow = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
   padding: 14px 16px;
   border-radius: 12px;
   background: #f8fafc;
@@ -76,6 +89,15 @@ export const WebsiteRow = styled.div`
 
   &:last-child {
     margin-bottom: 0;
+  }
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    align-items: flex-start;
+
+    &:hover {
+      transform: none;
+    }
   }
 `
 
@@ -93,6 +115,12 @@ export const SiteType = styled.span`
   padding: 3px 10px;
   border-radius: 20px;
   margin-left: 10px;
+
+  @media (max-width: 640px) {
+    display: inline-block;
+    margin-left: 0;
+    margin-top: 8px;
+  }
 `
 
 export const EmptyState = styled.div`

@@ -10,18 +10,18 @@ import {
 } from "./DashboardLayout.styles"
 
 export default function DashboardLayout({
-
     SidebarComponent,
     user,
+    activeTab,
+    onTabChange,
     children
-
 }) {
 
     return (
 
         <Layout>
 
-            <SidebarComponent />
+            <SidebarComponent activeTab={activeTab} onTabChange={onTabChange} />
 
             <Content>
 

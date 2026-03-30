@@ -1,6 +1,6 @@
 import React from "react"
-import { Monitor, Smartphone } from "lucide-react"
-import { PreviewSide, DeviceSwitcher, DeviceButton, PreviewFrame, PreviewViewport } from "../SectionsManager/SectionsManager.styles"
+// Icons are now imported from styles as styled-components
+import { PreviewSide, DeviceSwitcher, DeviceButton, PreviewFrame, PreviewViewport, DesktopIcon, MobileIcon } from "../SectionsManager/SectionsManager.styles"
 import SitePreview from "../../preview/SitePreview/SitePreview"
 
 export default function SectionPreviewPanel({ device, onDeviceChange, website, sections, activeSectionId }) {
@@ -8,10 +8,10 @@ export default function SectionPreviewPanel({ device, onDeviceChange, website, s
         <PreviewSide>
             <DeviceSwitcher>
                 <DeviceButton $active={device === "desktop"} onClick={() => onDeviceChange("desktop")}>
-                    <Monitor size={14} />
+                    <DesktopIcon />
                 </DeviceButton>
                 <DeviceButton $active={device === "mobile"} onClick={() => onDeviceChange("mobile")}>
-                    <Smartphone size={14} />
+                    <MobileIcon />
                 </DeviceButton>
             </DeviceSwitcher>
 

@@ -1,7 +1,7 @@
-﻿import React from "react"
+import React from "react"
 import {
     PolicyContent, PolicyTitle, PolicyDescription,
-    ContactSection, ContactCard, ContactTitle, ContactSub, ContactInput, ContactTextarea, ContactButton
+    ContactSection, ContactCard, ContactTitle, ContactSub, ContactInput, ContactTextarea, ContactButton, MapWrapper
 } from "./PolicyPage.styles"
 import { MapSection, MapIframe } from "../Footer/Footer.styles"
 
@@ -17,24 +17,24 @@ export default function PolicyPage({ currentPage, policy, contactData, storeName
         const locationData = policy || {}
         const address = locationData.address || bannerAddress || storeName + " store"
         return (
-            <ContactSection style={{ padding: "64px 24px", background: "white", width: "100%", boxSizing: "border-box" }}>
-                <PolicyTitle style={{ marginBottom: "8px" }}>{locationData.title || "Our Location"}</PolicyTitle>
-                <ContactSub style={{ marginBottom: "32px", fontSize: "16px" }}>{locationData.subtitle || "Visit us at our store"}</ContactSub>
-                <div style={{ width: "100%", maxWidth: "800px" }}>
+            <ContactSection $padding="64px 24px" $bg="white" $fullWidth>
+                <PolicyTitle $mb="8px">{locationData.title || "Our Location"}</PolicyTitle>
+                <ContactSub $mb="32px" $fz="16px">{locationData.subtitle || "Visit us at our store"}</ContactSub>
+                <MapWrapper>
                     <MapIframe 
                         title="Store Location"
                         src={`https://maps.google.com/maps?q=${encodeURIComponent(address)}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
                         loading="lazy"
-                        style={{ height: "450px" }}
+                        $height="450px"
                     />
-                </div>
+                </MapWrapper>
             </ContactSection>
         )
     }
 
     if (currentPage === "contact") {
         return (
-            <ContactSection style={{ padding: "64px 24px", background: "white" }}>
+            <ContactSection $padding="64px 24px" $bg="white">
                 <ContactCard>
                     <ContactTitle>{contactData?.title || "Contact us"}</ContactTitle>
                     <ContactSub>{contactData?.subtitle || "Have a question? We're here for you!"}</ContactSub>

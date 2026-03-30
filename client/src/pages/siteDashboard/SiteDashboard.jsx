@@ -18,6 +18,8 @@ import SiteDesign from "../../components/siteBuilder/SiteDesign/SiteDesign"
 import SectionsManager from "../../components/siteBuilder/sections/SectionsManager/SectionsManager"
 import ProductsTab from "../../components/siteBuilder/products/ProductsTab/ProductsTab"
 import OrdersTab from "../../components/siteBuilder/orders/OrdersTab/OrdersTab"
+import AnalyticsTab from "../../components/siteBuilder/analytics/AnalyticsTab/AnalyticsTab"
+import SettingsTab from "../../components/siteBuilder/settings/SettingsTab/SettingsTab"
 
 const PlaceholderTab = ({ name }) => (
     <ComingSoon>
@@ -75,9 +77,11 @@ export default function SiteDashboard() {
 
     }, [id])
 
-    const handleWebsiteUpdate = (newConfig) => {
+    // Called by child tabs when config data changes.
+    // SettingsTab also passes an updated website object (name, subdomain, published) as 2nd arg.
+    const handleWebsiteUpdate = (newConfig, updatedWebsite) => {
         setWebsite(prev => ({
-            ...prev,
+            ...(updatedWebsite || prev),
             config: newConfig
         }))
     }
@@ -87,7 +91,7 @@ export default function SiteDashboard() {
     }
 
     const renderMainContent = () => {
-        let content;
+        let content
         if (activeTab === "Design") {
             content = <SiteDesign key={website?._id} website={website} onUpdate={handleWebsiteUpdate} />
         } else if (activeTab === "Sections") {
@@ -95,7 +99,11 @@ export default function SiteDashboard() {
         } else if (activeTab === "Products") {
             content = <ProductsTab website={website} onUpdate={handleWebsiteUpdate} />
         } else if (activeTab === "Orders") {
-            content = <OrdersTab />
+            content = <OrdersTab website={website} onUpdate={handleWebsiteUpdate} />
+        } else if (activeTab === "Analytics") {
+            content = <AnalyticsTab website={website} />
+        } else if (activeTab === "Settings") {
+            content = <SettingsTab website={website} onUpdate={handleWebsiteUpdate} />
         } else if (activeTab === "Home") {
             content = <SiteHome website={website} user={user} />
         } else {

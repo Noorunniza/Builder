@@ -1,32 +1,18 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
-
-import SelectCard from "../../components/ui/SelectCard/SelectCard"
+// Icons are now imported from styles as styled-components
 
 import {
-    Container,
-    ContentBox,
-    Title,
-    Subtitle,
-    Grid,
-    ContinueButton,
-    BackButton
+    Page, Header, Logo, BackButton, Body,
+    Badge, Title, Subtitle, Grid, TypeCard,
+    TypeIcon, TypeName, TypeDesc, Footer, ContinueButton,
+    TYPES, BackIcon, NewBadgeIcon, ContinueIcon
 } from "./CreateWebsite.styles"
 
 export default function CreateWebsite() {
 
     const navigate = useNavigate()
-
     const [selected, setSelected] = useState(null)
-
-    const types = [
-        "online-store",
-        "portfolio",
-        "blog",
-        "restaurant",
-        "booking",
-        "business"
-    ]
 
     const handleContinue = () => {
         if (!selected) return
@@ -34,47 +20,39 @@ export default function CreateWebsite() {
     }
 
     return (
+        <Page>
+            <Header>
+                <BackButton onClick={() => navigate("/dashboard")}>
+                    <BackIcon /> Dashboard
+                </BackButton>
+                <Logo>✦ Builder</Logo>
+            </Header>
 
-        <Container>
-
-            <BackButton onClick={() => navigate("/dashboard")}>
-                ← Back to Dashboard
-            </BackButton>
-
-            <ContentBox>
-
-                <Title>Create a New Website</Title>
-
-                <Subtitle>
-                    Choose the type of website you want to build
-                </Subtitle>
+            <Body>
+                <Badge><NewBadgeIcon /> New Website</Badge>
+                <Title>What are you building?</Title>
+                <Subtitle>Pick a template that fits your project. You can customize everything later.</Subtitle>
 
                 <Grid>
-
-                    {types.map(type => (
-
-                        <SelectCard
-                            key={type}
-                            title={type.charAt(0).toUpperCase() + type.slice(1)}
-                            selected={selected === type}
-                            onClick={() => setSelected(type)}
-                        />
-
+                    {TYPES.map(t => (
+                        <TypeCard
+                            key={t.key}
+                            $selected={selected === t.key}
+                            onClick={() => setSelected(t.key)}
+                        >
+                            <TypeIcon $bg={t.bg} $color={t.color}>{t.icon}</TypeIcon>
+                            <TypeName>{t.name}</TypeName>
+                            <TypeDesc>{t.desc}</TypeDesc>
+                        </TypeCard>
                     ))}
-
                 </Grid>
 
-                <ContinueButton
-                    disabled={!selected}
-                    onClick={handleContinue}
-                >
-                    Continue
-                </ContinueButton>
-
-            </ContentBox>
-
-        </Container>
-
+                <Footer>
+                    <ContinueButton disabled={!selected} onClick={handleContinue}>
+                        Continue <ContinueIcon />
+                    </ContinueButton>
+                </Footer>
+            </Body>
+        </Page>
     )
-
 }

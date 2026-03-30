@@ -1,4 +1,4 @@
-﻿import styled from "styled-components"
+import styled from "styled-components"
 
 /* â”€â”€ Social Banner â”€â”€â”€ */
 export const SocialBanner = styled.div`
@@ -18,6 +18,14 @@ export const SocialSub = styled.p`
   font-size: 16px;
   opacity: 0.6;
   margin-bottom: 14px;
+`
+
+export const SocialImage = styled.img`
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  border-radius: ${p => p.$rounded ? "4px" : "0"};
+  opacity: ${p => p.$muted ? 0.5 : 1};
 `
 
 export const SocialIcons = styled.div`
@@ -190,7 +198,10 @@ export const AddressBox = styled.div`
 
 export const MapIframe = styled.iframe`
   width: 100%;
-  height: 300px;
+  height: ${p => p.$height || "300px"};
   border-radius: 8px;
   border: none;
 `
+
+export const DEFAULT_PRIMARY_COLOR = "#0f172a"
+export const COPYRIGHT_TEXT_COLOR = "#94a3b8"

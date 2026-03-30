@@ -1,10 +1,15 @@
 import styled from "styled-components"
+import { Monitor, Smartphone } from "lucide-react"
 
 export const SectionsContainer = styled.div`
   display: flex;
   height: 100%;
   width: 100%;
   background: white;
+
+  @media (max-width: 1100px) {
+    flex-direction: column;
+  }
 `
 
 export const EditorSide = styled.div`
@@ -14,12 +19,24 @@ export const EditorSide = styled.div`
   border-right: 1px solid #e2e8f0;
   background: #f8fafc;
   max-width: 450px;
+
+  @media (max-width: 1100px) {
+    max-width: none;
+    border-right: none;
+    border-bottom: 1px solid #e2e8f0;
+  }
 `
 
 export const EditorContent = styled.div`
   flex: 1;
   padding: 24px;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 640px) {
+    padding: 18px 16px;
+  }
 `
 
 export const SectionTitle = styled.h2`
@@ -37,6 +54,16 @@ export const SaveBar = styled.div`
   padding: 16px 24px;
   background: white;
   border-top: 1px solid #e2e8f0;
+  position: sticky;
+  bottom: -24px;
+  margin: 40px -24px -24px -24px;
+  z-index: 100;
+
+  @media (max-width: 640px) {
+    bottom: -18px;
+    margin: 40px -16px -18px -16px;
+    padding: 16px;
+  }
 `
 
 export const SaveButton = styled.button`
@@ -105,6 +132,10 @@ export const PreviewSide = styled.div`
   flex-direction: column;
   overflow: hidden;
   position: relative;
+
+  @media (max-width: 1100px) {
+    min-height: 60vh;
+  }
 `
 
 export const DeviceSwitcher = styled.div`
@@ -119,6 +150,10 @@ export const DeviceSwitcher = styled.div`
   display: flex;
   gap: 4px;
   z-index: 10;
+
+  @media (max-width: 640px) {
+    top: 12px;
+  }
 `
 
 export const DeviceButton = styled.button`
@@ -148,10 +183,14 @@ export const PreviewFrame = styled.div`
   justify-content: center;
   overflow-y: auto;
   padding: 64px 24px 24px;
+
+  @media (max-width: 640px) {
+    padding: 56px 8px 20px;
+  }
 `
 
 export const PreviewViewport = styled.div`
-  width: ${p => p.device === "mobile" ? "390px" : "100%"};
+  width: ${p => p.device === "mobile" ? "min(390px, 100%)" : "100%"};
   max-width: ${p => p.device === "mobile" ? "390px" : "900px"};
   min-height: 500px;
   background: white;
@@ -160,3 +199,6 @@ export const PreviewViewport = styled.div`
   box-shadow: 0 20px 60px rgba(0,0,0,0.15);
   transition: width 0.3s ease;
 `
+
+export const DesktopIcon = styled(Monitor).attrs({ size: 14 })``
+export const MobileIcon = styled(Smartphone).attrs({ size: 14 })``

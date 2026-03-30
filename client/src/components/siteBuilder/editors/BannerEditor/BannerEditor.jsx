@@ -1,10 +1,12 @@
 import React, { useState } from "react"
+import { uploadImage } from "../../../../services/uploadService"
 
 import {
     SectionBox, TopBar, HeadingText, DropdownContent,
     IconUp, IconDown,
     InputContainer, Label, InputBox, ColorBox, ColorPicker, HexText,
-    ImageUploadArea, PreviewImg, EmptyImage, TextArea, MainText, SubText
+    ImageUploadArea, PreviewImg, EmptyImage, TextArea, MainText, SubText,
+    DEFAULT_BG_COLOR, DEFAULT_TEXT_COLOR
 } from "./BannerEditor.styles"
 
 function Section({ title, children }) {
@@ -27,6 +29,8 @@ export default function BannerEditor({ config, onChange }) {
 
     return (
         <>
+
+
             <Section title="Store Info">
                 <InputContainer>
                     <Label>Store Name</Label>
@@ -48,12 +52,15 @@ export default function BannerEditor({ config, onChange }) {
 
             <Section title="Hero Background">
                 <ImageUploadArea>
-                    <input type="file" accept="image/*" onChange={e => {
+                    <input type="file" accept="image/*" onChange={async e => {
                         const file = e.target.files[0]
                         if (!file) return
-                        const reader = new FileReader()
-                        reader.onload = ev => set("bgImage", ev.target.result)
-                        reader.readAsDataURL(file)
+                        try {
+                            const url = await uploadImage(file)
+                            set("bgImage", url)
+                        } catch (err) {
+                            console.error("Banner upload failed", err)
+                        }
                     }} />
                     {b.bgImage
                         ? <PreviewImg src={b.bgImage} alt="banner" />
@@ -67,15 +74,15 @@ export default function BannerEditor({ config, onChange }) {
                 <InputContainer>
                     <Label>Background Color (fallback)</Label>
                     <ColorBox>
-                        <ColorPicker value={b.bgColor || "#1e293b"} onChange={e => set("bgColor", e.target.value)} />
-                        <HexText>{b.bgColor || "#1e293b"}</HexText>
+                        <ColorPicker value={b.bgColor || DEFAULT_BG_COLOR} onChange={e => set("bgColor", e.target.value)} />
+                        <HexText>{b.bgColor || DEFAULT_BG_COLOR}</HexText>
                     </ColorBox>
                 </InputContainer>
                 <InputContainer>
                     <Label>Text Color</Label>
                     <ColorBox>
-                        <ColorPicker value={b.textColor || "#ffffff"} onChange={e => set("textColor", e.target.value)} />
-                        <HexText>{b.textColor || "#ffffff"}</HexText>
+                        <ColorPicker value={b.textColor || DEFAULT_TEXT_COLOR} onChange={e => set("textColor", e.target.value)} />
+                        <HexText>{b.textColor || DEFAULT_TEXT_COLOR}</HexText>
                     </ColorBox>
                 </InputContainer>
             </Section>

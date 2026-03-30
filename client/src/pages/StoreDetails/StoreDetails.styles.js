@@ -8,6 +8,12 @@ export const Container = styled.div`
   justify-content: center;
   padding: 40px 20px;
   background: #f8fafc;
+  position: relative;
+
+  @media (max-width: 640px) {
+    justify-content: flex-start;
+    padding: 84px 16px 24px;
+  }
 `
 
 export const ContentBox = styled.div`
@@ -21,6 +27,11 @@ export const ContentBox = styled.div`
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
   max-width: 600px;
   width: 100%;
+
+  @media (max-width: 640px) {
+    padding: 28px 18px;
+    border-radius: 18px;
+  }
 `
 
 export const Title = styled.h1`
@@ -28,6 +39,11 @@ export const Title = styled.h1`
   font-weight: 800;
   color: #0f172a;
   margin-bottom: 8px;
+  text-align: center;
+
+  @media (max-width: 640px) {
+    font-size: 26px;
+  }
 `
 
 export const Subtitle = styled.p`
@@ -177,6 +193,11 @@ export const BackButton = styled.button`
     color: #0f172a;
     border-color: #cbd5e1;
     transform: translateX(-3px);
+  }
+
+  @media (max-width: 640px) {
+    top: 16px;
+    left: 16px;
   }
 `
 

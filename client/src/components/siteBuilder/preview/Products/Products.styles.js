@@ -1,4 +1,5 @@
-﻿import styled, { css } from "styled-components"
+import styled, { css } from "styled-components"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 
 export const ProductSection = styled.div`
   padding: 4px 16px 30px;
@@ -28,15 +29,11 @@ export const ProductSectionTitle = styled.h3`
 
 export const ProductGrid = styled.div`
   display: grid;
-  grid-template-columns: ${p => p.$device === "mobile" ? "repeat(2, 1fr)" : "repeat(3, 1fr)"};
+  grid-template-columns: ${p => p.$device === "mobile" ? "repeat(2, 1fr)" : "repeat(4, 1fr)"};
   gap: ${p => p.$device === "mobile" ? "12px" : "18px"};
 
-  @media (max-width: 1024px) {
+  @media (max-width: 960px) {
     grid-template-columns: repeat(3, 1fr);
-  }
-
-  @media (max-width: 860px) {
-    grid-template-columns: repeat(2, 1fr);
   }
   
   @media (max-width: 600px) {
@@ -45,36 +42,47 @@ export const ProductGrid = styled.div`
   }
 `
 
-export const ViewMoreCard = styled.div`
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1.5px dashed ${p => p.$primaryColor || "#6366f1"};
-  background: ${p => p.$primaryColor
-    ? `linear-gradient(160deg, ${p.$primaryColor}18 0%, ${p.$primaryColor}08 100%)`
-    : "linear-gradient(160deg, #eef2ff 0%, #f8fafc 100%)"};
+export const PaginationRow = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+`
+
+export const PageButton = styled.button`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid ${p => p.$active ? (p.$primaryColor || "#0f172a") : "#e2e8f0"};
+  background: ${p => p.$active ? (p.$primaryColor || "#0f172a") : "white"};
+  color: ${p => p.$active ? "white" : "#64748b"};
+  font-size: 14px;
+  font-weight: 700;
   cursor: pointer;
-  transition: all 0.25s ease;
-  min-height: ${p => p.$device === "mobile" ? "160px" : "250px"};
-  
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 14px 28px rgba(15, 23, 42, 0.14);
+  transition: all 0.2s ease;
+
+  &:hover:not(:disabled) {
+    border-color: ${p => p.$primaryColor || "#0f172a"};
+    color: ${p => p.$active ? "white" : (p.$primaryColor || "#0f172a")};
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 `
 
-export const ViewMoreText = styled.span`
-  margin-top: 12px;
-  font-size: 16px;
-  font-weight: 700;
-  color: ${p => p.$primaryColor || "#6366f1"};
+export const PageText = styled.span`
+  font-size: 14px;
+  color: #64748b;
+  margin: 0 4px;
 `
 
 export const ProductCard = styled.div`
-  position: relative;
   border-radius: 16px;
   overflow: hidden;
   border: 1px solid #e2e8f0;
@@ -89,8 +97,9 @@ export const ProductCard = styled.div`
 `
 
 export const ProductImage = styled.div`
-  height: ${p => p.$device === "mobile" ? "170px" : "clamp(220px, 28vw, 320px)"};
-  background: #e2e8f0;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  background: white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -100,27 +109,22 @@ export const ProductImage = styled.div`
   padding: 0;
 
   ${ProductCard}:hover & img { transform: none; }
-  
-  @media (max-width: 600px) {
-    height: 170px;
-  }
 `
 
 export const ProductImageTag = styled.img`
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
   transition: none;
-  background: #e2e8f0;
+  background: white;
   image-rendering: auto;
 `
 
 export const ProductImageEmpty = styled.div`
   width: 100%;
   height: 100%;
-  border-radius: 10px;
   border: 1px dashed #cbd5e1;
   background: repeating-linear-gradient(
     45deg,
@@ -152,21 +156,15 @@ export const ProductBadge = styled.span`
 `
 
 export const ProductInfo = styled.div`
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 12px 14px;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(3px);
+  padding: 12px 13px 14px;
 `
 
 export const ProductName = styled.p`
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 700;
   color: #0f172a;
-  line-height: 1.25;
-  margin: 0 0 6px;
+  line-height: 1.35;
+  margin: 0 0 7px;
 `
 
 export const ProductPrice = styled.div`
@@ -177,9 +175,9 @@ export const ProductPrice = styled.div`
 
 export const ProductDiscount = styled.span`
   font-size: 12px;
-  color: #0f172a;
+  color: #16a34a;
   font-weight: 700;
-  background: #e2e8f0;
+  background: #dcfce7;
   padding: 2px 8px;
   border-radius: 999px;
 `
@@ -232,3 +230,6 @@ export const SubcategoryPill = styled.div`
     }
   `}
 `
+
+export const PrevPageIcon = styled(ChevronLeft).attrs({ size: 16 })``
+export const NextPageIcon = styled(ChevronRight).attrs({ size: 16 })``

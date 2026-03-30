@@ -1,4 +1,4 @@
-﻿import styled from "styled-components"
+import styled from "styled-components"
 
 export const PreviewRoot = styled.div`
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -34,3 +34,5 @@ export const PolicyView = styled.div`
   display: flex;
   flex-direction: column;
 `
+
+export const DEFAULT_PRIMARY_COLOR = "#0f172a"

@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import {
     Toolbar, PageTitle, AddBtn,
     Form, FormCard, FormTitle,
-    FieldGroup, Label, Input, SubmitBtn
+    FieldGroup, Label, Input, Select, SubmitBtn, StickyButtonBar, SubcategoryItem
 } from "../ProductsTab/ProductsTab.styles"
 
 export default function AddSubcategory({ categories, onSave, onBack }) {
@@ -38,8 +38,7 @@ export default function AddSubcategory({ categories, onSave, onBack }) {
                     <FormTitle>New Subcategory</FormTitle>
                     <FieldGroup>
                         <Label>Select Category *</Label>
-                        <select 
-                            style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', border: '1px solid #e2e8f0', background: 'var(--bg-card)', color: 'var(--text-main)', fontSize: '15px' }}
+                        <Select 
                             value={categoryId} 
                             onChange={e => setCategoryId(e.target.value)}
                         >
@@ -47,7 +46,7 @@ export default function AddSubcategory({ categories, onSave, onBack }) {
                             {categories.map(c => (
                                 <option key={c._id} value={c._id}>{c.name}</option>
                             ))}
-                        </select>
+                        </Select>
                     </FieldGroup>
                     <FieldGroup>
                         <Label>Subcategory Name *</Label>
@@ -57,16 +56,18 @@ export default function AddSubcategory({ categories, onSave, onBack }) {
                             onChange={e => setName(e.target.value)}
                         />
                     </FieldGroup>
-                    <SubmitBtn type="submit" disabled={!categoryId}>Add Subcategory</SubmitBtn>
+                    <StickyButtonBar>
+                        <SubmitBtn type="submit" disabled={!categoryId} $flex1>Add Subcategory</SubmitBtn>
+                    </StickyButtonBar>
                 </FormCard>
 
                 {categoryId && existingSubcategories.length > 0 && (
                     <FormCard>
                         <FormTitle>Existing Subcategories in {selectedCategory?.name}</FormTitle>
                         {existingSubcategories.map(c => (
-                            <div key={c} style={{ fontSize: "14px", padding: "6px 0", borderBottom: "1px solid #f1f5f9", color: "#0f172a" }}>
+                            <SubcategoryItem key={c}>
                                 {c}
-                            </div>
+                            </SubcategoryItem>
                         ))}
                     </FormCard>
                 )}

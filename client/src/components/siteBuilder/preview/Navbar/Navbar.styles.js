@@ -1,4 +1,5 @@
-﻿import styled, { keyframes } from "styled-components"
+import styled, { keyframes } from "styled-components"
+import { Search, ShoppingCart, Home, Menu, X } from "lucide-react"
 
 const fadeIn = keyframes`
   from { opacity: 0; transform: translateY(-6px); }
@@ -17,38 +18,34 @@ export const DesktopNavWrapper = styled.div`
   z-index: 100;
 `
 
-export const StyledSearchIcon = styled.div`
+export const StyledSearchIcon = styled(Search).attrs({ size: 18 })`
   display: flex;
   align-items: center;
   justify-content: center;
   color: #94a3b8;
   flex-shrink: 0;
-  svg { width: 18px; height: 18px; }
 `
 
-export const StyledNavIcon = styled.div`
+export const StyledNavIcon = styled(Home).attrs({ size: 24 })`
   display: flex;
   align-items: center;
   justify-content: center;
   color: #374151;
   cursor: pointer;
-  svg { width: 24px; height: 24px; }
 `
 
-export const StyledCartIcon = styled.div`
+export const StyledCartIcon = styled(ShoppingCart).attrs({ size: 24 })`
   display: flex;
   align-items: center;
   justify-content: center;
   color: #374151;
-  svg { width: 24px; height: 24px; }
 `
 
-export const StyledMenuIcon = styled.div`
+export const StyledMenuIcon = styled(Menu).attrs({ size: 28 })`
   display: flex;
   align-items: center;
   justify-content: center;
   color: #374151;
-  svg { width: 28px; height: 28px; }
 `
 
 export const NavLogoContainer = styled.div`
@@ -261,6 +258,23 @@ export const NavLogoPlaceholder = styled.div`
 
 export const CartWrapper = styled.div`
   position: relative;
+  cursor: pointer;
+`
+
+export const DesktopSearchContainer = styled.div`
+  position: relative;
+  flex: 1;
+  max-width: 480px;
+`
+
+export const ClearIconWrap = styled.div`
+  cursor: pointer;
+  color: #94a3b8;
+  display: flex;
+`
+
+export const Spacer = styled.div`
+  flex: 1;
 `
 
 export const CartBadge = styled.span`
@@ -278,3 +292,7 @@ export const CartBadge = styled.span`
   font-size: 9px;
   font-weight: 700;
 `
+
+export const DEFAULT_PRIMARY_COLOR = "#0f172a"
+
+export const ClearSearchIcon = styled(X).attrs({ size: 16 })``

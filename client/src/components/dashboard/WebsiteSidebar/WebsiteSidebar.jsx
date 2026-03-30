@@ -5,74 +5,80 @@ import {
     Container,
     Menu,
     MenuItem,
-    Logo
+    Logo,
+    LogoutButton,
+    HomeIcon,
+    DesignIcon,
+    SectionsIcon,
+    ProductsIcon,
+    OrdersIcon,
+    AnalyticsIcon,
+    SettingsIcon,
+    PostsIcon,
+    MenuIcon,
+    BookingsIcon,
+    DomainIcon,
+    LogoutIcon
 } from "./WebsiteSidebar.styles"
-
-import {
-    Home,
-    Paintbrush,
-    Layers,
-    ShoppingBag,
-    ShoppingCart,
-    BarChart3,
-    Settings,
-    BookOpen,
-    Utensils,
-    CalendarDays,
-    Globe
-} from "lucide-react"
 
 const navByType = {
     "online-store": [
-        { name: "Home", icon: <Home size={18} /> },
-        { name: "Design", icon: <Paintbrush size={18} /> },
-        { name: "Sections", icon: <Layers size={18} /> },
-        { name: "Products", icon: <ShoppingBag size={18} /> },
-        { name: "Orders", icon: <ShoppingCart size={18} /> },
-        { name: "Analytics", icon: <BarChart3 size={18} /> },
-        { name: "Settings", icon: <Settings size={18} /> }
+        { name: "Home", icon: <HomeIcon /> },
+        { name: "Design", icon: <DesignIcon /> },
+        { name: "Sections", icon: <SectionsIcon /> },
+        { name: "Products", icon: <ProductsIcon /> },
+        { name: "Orders", icon: <OrdersIcon /> },
+        { name: "Analytics", icon: <AnalyticsIcon /> },
+        { name: "Settings", icon: <SettingsIcon /> }
     ],
     "portfolio": [
-        { name: "Home", icon: <Home size={18} /> },
-        { name: "Design", icon: <Paintbrush size={18} /> },
-        { name: "Sections", icon: <Layers size={18} /> },
-        { name: "Analytics", icon: <BarChart3 size={18} /> },
-        { name: "Settings", icon: <Settings size={18} /> }
+        { name: "Home", icon: <HomeIcon /> },
+        { name: "Design", icon: <DesignIcon /> },
+        { name: "Sections", icon: <SectionsIcon /> },
+        { name: "Analytics", icon: <AnalyticsIcon /> },
+        { name: "Settings", icon: <SettingsIcon /> }
     ],
     "blog": [
-        { name: "Home", icon: <Home size={18} /> },
-        { name: "Design", icon: <Paintbrush size={18} /> },
-        { name: "Posts", icon: <BookOpen size={18} /> },
-        { name: "Analytics", icon: <BarChart3 size={18} /> },
-        { name: "Settings", icon: <Settings size={18} /> }
+        { name: "Home", icon: <HomeIcon /> },
+        { name: "Design", icon: <DesignIcon /> },
+        { name: "Posts", icon: <PostsIcon /> },
+        { name: "Analytics", icon: <AnalyticsIcon /> },
+        { name: "Settings", icon: <SettingsIcon /> }
     ],
     "restaurant": [
-        { name: "Home", icon: <Home size={18} /> },
-        { name: "Design", icon: <Paintbrush size={18} /> },
-        { name: "Menu", icon: <Utensils size={18} /> },
-        { name: "Analytics", icon: <BarChart3 size={18} /> },
-        { name: "Settings", icon: <Settings size={18} /> }
+        { name: "Home", icon: <HomeIcon /> },
+        { name: "Design", icon: <DesignIcon /> },
+        { name: "Menu", icon: <MenuIcon /> },
+        { name: "Analytics", icon: <AnalyticsIcon /> },
+        { name: "Settings", icon: <SettingsIcon /> }
     ],
     "booking": [
-        { name: "Home", icon: <Home size={18} /> },
-        { name: "Design", icon: <Paintbrush size={18} /> },
-        { name: "Bookings", icon: <CalendarDays size={18} /> },
-        { name: "Analytics", icon: <BarChart3 size={18} /> },
-        { name: "Settings", icon: <Settings size={18} /> }
+        { name: "Home", icon: <HomeIcon /> },
+        { name: "Design", icon: <DesignIcon /> },
+        { name: "Bookings", icon: <BookingsIcon /> },
+        { name: "Analytics", icon: <AnalyticsIcon /> },
+        { name: "Settings", icon: <SettingsIcon /> }
     ],
     "business": [
-        { name: "Home", icon: <Home size={18} /> },
-        { name: "Design", icon: <Paintbrush size={18} /> },
-        { name: "Sections", icon: <Layers size={18} /> },
-        { name: "Domain", icon: <Globe size={18} /> },
-        { name: "Analytics", icon: <BarChart3 size={18} /> },
-        { name: "Settings", icon: <Settings size={18} /> }
+        { name: "Home", icon: <HomeIcon /> },
+        { name: "Design", icon: <DesignIcon /> },
+        { name: "Sections", icon: <SectionsIcon /> },
+        { name: "Domain", icon: <DomainIcon /> },
+        { name: "Analytics", icon: <AnalyticsIcon /> },
+        { name: "Settings", icon: <SettingsIcon /> }
     ]
 }
 
 export default function WebsiteSidebar({ type, activeTab, onTabChange, storeName }) {
+    const navigate = useNavigate()
 
     const items = navByType[type] || navByType["business"]
+
+    const handleLogout = () => {
+        localStorage.removeItem("token")
+        localStorage.removeItem("provider")
+        navigate("/")
+    }
 
     return (
 
@@ -97,8 +103,11 @@ export default function WebsiteSidebar({ type, activeTab, onTabChange, storeName
 
             </Menu>
 
+            <LogoutButton onClick={handleLogout}>
+                <LogoutIcon />
+                Logout
+            </LogoutButton>
+
         </Container>
-
     )
-
 }
