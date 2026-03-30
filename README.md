@@ -735,10 +735,7 @@ This section is important for a project submission because it reflects the real 
 
 ## 17. Suggested Future Enhancements
 
-- add automated tests for frontend and backend
-- move hardcoded frontend constants to environment variables
-- secure the upload route
-- add role-based authorization if multi-user team support is needed
+
 - support custom domains instead of route-based subdomains only
 - add payment gateway integration
 - add inventory tracking
@@ -757,4 +754,3 @@ This project is a practical full-stack website builder with a strong emphasis on
 - public storefront rendering
 - real order and analytics workflows
 
-For submission purposes, the project can be presented as a working e-commerce website builder prototype with admin management, public storefront delivery, and basic commerce operations already implemented.
